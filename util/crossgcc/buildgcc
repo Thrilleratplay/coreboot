@@ -297,8 +297,9 @@ hostcc_has_gnat1() {
 }
 
 have_gnat() {
+	$(${CC} -print-prog-name=gnat1) && \
 	hostcc_has_gnat1 && \
-	searchtool gnatbind "Free Software Foundation" nofail > /dev/null
+	searchtool gnatbind "Free Software Foundation" nofail
 }
 
 ada_requested() {
