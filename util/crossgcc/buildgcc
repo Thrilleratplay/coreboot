@@ -1077,7 +1077,9 @@ if [ -n "$CC" ]; then
 		HALT_FOR_TOOLS=1
 	fi
 else
+        which gnatgcc
         gnatgcc --version
+	which gcc
 	gcc --version
 	
 	if searchtool gnatgcc "Free Software Foundation" nofail > /dev/null; then
