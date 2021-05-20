@@ -263,7 +263,7 @@ check_for_library() {
 	echo "int main(int argc, char **argv) { (void) argc; (void) argv; return 0; }" > "${LIBTEST_FILE}.c"
 
 	# shellcheck disable=SC2086
-	"$CC" $CFLAGS $LIBRARY_FLAGS "${LIBTEST_FILE}.c" -o "${LIBTEST_FILE}" >/dev/null 2>&1 || \
+	"$CC" $CFLAGS $LIBRARY_FLAGS "${LIBTEST_FILE}.c" -o "${LIBTEST_FILE}" || \
 		please_install "$LIBRARY_PACKAGES"
 	rm -rf "${LIBTEST_FILE}.c" "${LIBTEST_FILE}"
 }
@@ -1077,6 +1077,9 @@ if [ -n "$CC" ]; then
 		HALT_FOR_TOOLS=1
 	fi
 else
+        gnatgcc -version
+	gcc -version
+	
 	if searchtool gnatgcc "Free Software Foundation" nofail > /dev/null; then
 		CC=gnatgcc
 	elif searchtool gcc "Free Software Foundation" nofail > /dev/null; then
