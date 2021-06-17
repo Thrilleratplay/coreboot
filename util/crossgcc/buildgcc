@@ -1081,9 +1081,12 @@ else
         gnatgcc --version
 	which gcc
 	gcc --version
+	which gnatbind
+        gnatbind --version
 	
 	if searchtool gnatgcc "Free Software Foundation" nofail > /dev/null; then
 		CC=gnatgcc
+		echo "USING GNATGCC!!!!!!"
 	elif searchtool gcc "Free Software Foundation" nofail > /dev/null; then
 		CC=gcc
 	else
